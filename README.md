@@ -14,6 +14,8 @@ composer require nafisc/simple-eloquent
 ### Initializing a Connection
 
 ```php
+    use \SimpleEloquent\Connection;
+    
     $connection = Connection::set (
 
         // Connection Name
