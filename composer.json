@@ -1,0 +1,22 @@
+{
+    "name": "nafisc/simple-eloquent",
+    "description": "A wrapper for Eloquent directed at simpler implementations.",
+    "type": "library",
+    "require": {
+        "illuminate/database": "^5.7",
+        "illuminate/events": "^5.7",
+        "php": ">=7.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SimpleEloquent\\": "src/SimpleEloquent"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nathan Fiscaletti",
+            "email": "nathan.fiscaletti@gmail.com"
+        }
+    ]
+}
