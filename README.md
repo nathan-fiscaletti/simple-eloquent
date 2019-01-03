@@ -1,8 +1,13 @@
 # Simple Eloquent
 > SimpleEloquent is a wrapper around Eloquent that makes common practices a little easier.
 
-> SimpleEloquent is available through composer.
-> `composer require nafisc/simple-eloquent`
+## Installation
+
+SimpleEloquent is available through composer.
+
+```
+composer require nafisc/simple-eloquent
+```
 
 ## Usage
 
