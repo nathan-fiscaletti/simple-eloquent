@@ -105,6 +105,30 @@ class Connection
     }
 
     /**
+     * Attempt to forward any unknown methods to
+     * the Eloquent Connection object.
+     *
+     * @param string $name
+     * @param array  $params
+     *
+     * @return mixed
+     */
+    public function __call($name, $params)
+    {
+        if (! method_exists($this->connection, $name)) {
+            trigger_error(
+                "Uncaught Error: Call to undefined method ".
+                "SimpleEloquent\Connection::".$name,
+                E_USER_ERROR
+            );
+
+            return;
+        }
+
+        return $this->connection->{$name}(...$params);
+    }
+
+    /**
      * Create a new model with a configuration.
      * 
      * Minimum Config:

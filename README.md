@@ -36,13 +36,20 @@ composer require nafisc/simple-eloquent
 ### Executing Sql / Accessing Eloquent Connection
 
 ```php
-    // Retrieve the Eloquent Connection
-    $connection = Connection::get('test')->eloquentConnection();
+    // Retrieve the Connection
+    $connection = Connection::get('test');
 
     // Execute some Sql
-    $result = $connection->select('SELECT * FROM servers LIMIT 1');
+    $result = $connection->select('SELECT * FROM `servers` LIMIT 1');
     $server = $result[0];
     echo $server->ipv4.PHP_EOL;
+
+    . . . 
+
+    // Alternately, you can access the eloquent
+    // connection object directly.
+    $connection = Connection::get('test')->eloquentConnection();
+    $result = $connection->select('SELECT * FROM `servers` LIMIT 1');
 ```
 
 ### Using Models
