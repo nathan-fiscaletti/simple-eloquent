@@ -1,6 +1,12 @@
 # Simple Eloquent
 > SimpleEloquent is a wrapper around Eloquent that makes common practices a little easier.
 
+[![StyleCI](https://styleci.io/repos/163902694/shield?style=flat)](https://styleci.io/repos/163902694)
+[![Latest Stable Version](https://poser.pugx.org/nafisc/simple-eloquent/v/stable?format=flat)](https://packagist.org/packages/nafisc/simple-eloquent)
+[![Total Downloads](https://poser.pugx.org/nafisc/simple-eloquent/downloads?format=flat)](https://packagist.org/packages/nafisc/simple-eloquent)
+[![Latest Unstable Version](https://poser.pugx.org/nafisc/simple-eloquent/v/unstable?format=flat)](https://packagist.org/packages/nafisc/simple-eloquent)
+[![License](https://poser.pugx.org/nafisc/simple-eloquent/license?format=flat)](https://packagist.org/packages/nafisc/simple-eloquent)
+
 ## Installation
 
 SimpleEloquent is available through composer.
