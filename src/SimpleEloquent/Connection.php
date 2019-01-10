@@ -2,10 +2,10 @@
 
 namespace SimpleEloquent;
 
+use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
-use Illuminate\Events\Dispatcher;
 
 class Connection
 {
