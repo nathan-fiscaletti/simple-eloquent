@@ -2,47 +2,47 @@
 
 namespace SimpleEloquent;
 
-use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Illuminate\Events\Dispatcher;
 
 class Connection
 {
     /**
      * The connection name.
-     * 
+     *
      * @var string
      */
     private $connection_name;
 
     /**
      * The eloquent connection.
-     * 
+     *
      * @var \Illuminate\Database\Connection
      */
     private $connection;
 
     /**
      * The capsule associated with this connection.
-     * 
+     *
      * @var Illuminate\Database\Capsule\Manager
      */
     private $capsule;
 
     /**
      * All active connections.
-     * 
+     *
      * @var array
      */
     private static $connections = [];
 
     /**
      * Create a new connection.
-     * 
+     *
      * @param string $name
      * @param string $config
-     * 
+     *
      * @return SimpleEloquent\Connection
      */
     public static function set($name, $config)
@@ -72,7 +72,7 @@ class Connection
 
     /**
      * Retrieve a connection associated with the specified name.
-     * 
+     *
      * @return SimpleEloquent\Connection|null
      */
     public static function get($name)
@@ -80,8 +80,6 @@ class Connection
         if (array_key_exists($name, self::$connections)) {
             return self::$connections[$name];
         }
-
-        return null;
     }
 
     /**
@@ -96,7 +94,7 @@ class Connection
     /**
      * Retrieve the Eloquent connection object
      * associated with this Connection.
-     * 
+     *
      * @return \Illuminate\Database\Connection
      */
     public function eloquentConnection()
@@ -117,7 +115,7 @@ class Connection
     {
         if (! method_exists($this->connection, $name)) {
             trigger_error(
-                "Uncaught Error: Call to undefined method ".
+                'Uncaught Error: Call to undefined method '.
                 "SimpleEloquent\Connection::".$name,
                 E_USER_ERROR
             );
@@ -130,31 +128,24 @@ class Connection
 
     /**
      * Create a new model with a configuration.
-     * 
+     *
      * Minimum Config:
-     * 
+     *
      *     [
      *         'table' => 'TableName',
      *     ]
-     * 
+     *
      * You can also add any other property outlined here:
      * https://laravel.com/api/5.7/Illuminate/Database/Eloquent/Model.html
-     * 
+     *
      * @param array|string $config
      * @param array $attributes
-     * 
+     *
      * @return Illuminate\Database\Eloquent\Model
      */
     public function model($config, array $attributes = [])
     {
-        return new class (
-            $attributes,
-            $config,
-            $this->connection_name,
-            true
-        ) 
-            extends EloquentModel
-        {
+        return new class($attributes, $config, $this->connection_name, true) extends EloquentModel {
             public function __construct(
                 $attributes = [],
                 $config = null,
@@ -168,13 +159,14 @@ class Connection
                         $config = ['table' => $config];
                     }
 
-                    if (! array_key_exists('table', $config))
+                    if (! array_key_exists('table', $config)) {
                         die('SimpleEloquent: Missing \'table\' key.');
+                    }
 
                     foreach ($config as $property => $value) {
                         if (! property_exists($this, "${property}")) {
                             trigger_error(
-                                "SimpleEloquent: Unknown property in Model ".
+                                'SimpleEloquent: Unknown property in Model '.
                                 "configuration array: '${property}'.",
                                 E_USER_WARNING
                             );
